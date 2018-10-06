@@ -18,6 +18,7 @@ public class Sarasas2{
 	}
 
 	
+	@Override
 	public Sarasas2 clone() {
 		// sukuria saraso kopija
 		// nuskaito produktus is sios klases map'o, ir sukisa i naujo produkto sarasa

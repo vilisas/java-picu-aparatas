@@ -43,6 +43,7 @@ public class Receptas extends Sarasas {
 		return "Receptas [pavadinimas=" + pavadinimas + "] -> " + super.toString();
 	}
 
+	@Override
 	public Receptas clone() {
 		return new Receptas(this.getPavadinimas(), this.gautiProduktuKopija());
 		

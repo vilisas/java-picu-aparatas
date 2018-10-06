@@ -1,6 +1,5 @@
 package lt.vilisas.picuaparatas;
 
-import lt.vilisas.picuaparatas.*;
 import lt.vilisas.picuaparatas.Exceptions.PicaException;
 import lt.vilisas.picuaparatas.Picos.Pica;
 import lt.vilisas.picuaparatas.Picos.Receptas;
@@ -107,7 +106,7 @@ class ServisoTestai {
 	void aparatoSkaitliukoTestas() {
 		PicuAparatas aparatas = PicuAparatuServisas.sukurtiPicuAparata("aparatas");
 		Receptas surioPicosReceptas = gautiSurioPicosRecepta();
-		for (int i = 1; i< aparatas.PANAUDOJIMU_SKAICIAUS_RIBA; i++) {
+		for (int i = 1; i< PicuAparatas.PANAUDOJIMU_SKAICIAUS_RIBA; i++) {
 			PicuAparatuServisas.uzpildytiAparataProduktais("aparatas", surioPicosReceptas);
 			try {
 				PicuAparatuServisas.patiektiPica("aparatas", "surio", 1);
