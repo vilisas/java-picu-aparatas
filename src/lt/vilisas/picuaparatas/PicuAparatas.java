@@ -38,28 +38,19 @@ import lt.vilisas.picuaparatas.Picos.Sarasas;
 public class PicuAparatas extends Sarasas {
 	
 	public final static int PANAUDOJIMU_SKAICIAUS_RIBA = 20;
-//	private ArrayList<Produktas> produktai;
 	private int pagamintaPicu = 0;
 	private int valymoSkaitliukas = PANAUDOJIMU_SKAICIAUS_RIBA;
 	private String pavadinimas;	// picos pavadinimas
 	
-	public String getPavadinimas() {
-		return pavadinimas;
-	}
-
-	public void setPavadinimas(String pavadinimas) {
-		this.pavadinimas = pavadinimas;
-	}
-
 	public PicuAparatas() {
 		super();
 	}
-	
+
 	public PicuAparatas(String pavadinimas) {
 		this();
-		setPavadinimas(pavadinimas);
+		this.pavadinimas = pavadinimas;
 	}
-	
+
 	/**
 	 * patikrina, ar pakanka produktu aparate picai, pagal nurodyta recepta pagaminti
 	 * @param receptas
@@ -77,6 +68,7 @@ public class PicuAparatas extends Sarasas {
 			}
 		return true;
 	}
+		
 	public Pica gamintiPica(Receptas receptas, int dydis) throws PicaException {
 		/*
 		 * Sutikrina, ar pakanka produktu pasirinktai picai ir dydziui pagaminti
@@ -118,28 +110,36 @@ public class PicuAparatas extends Sarasas {
 		this.valymoSkaitliukas--;
 		return pica;		
 	}
-			
+
 	public boolean arPasiruoses() {
 		return(valymoSkaitliukas >0);
-	}
-	
-	protected void valytiAparata() {
-		this.valymoSkaitliukas = PANAUDOJIMU_SKAICIAUS_RIBA;
 	}
 
 	protected int gautiPagamintuPicuSkaiciu() {
 		return pagamintaPicu;
 	}
-
+			
 	protected int gautiValymoSkaitliuka() {
 		return valymoSkaitliukas;
 	}
 	
+	public String getPavadinimas() {
+		return pavadinimas;
+	}
+
+	public void setPavadinimas(String pavadinimas) {
+		this.pavadinimas = pavadinimas;
+	}
+
 	@Override
 	public String toString() {
 		return "PicuAparatas [arPasiruoses()=" + arPasiruoses() + ", pavadinimas=" + pavadinimas + ", pagamintaPicu="
 				+ pagamintaPicu + ", valymoSkaitliukas=" + valymoSkaitliukas + ", getProduktai()=" + getProduktai()
 				+ "]";
+	}
+	
+	protected void valytiAparata() {
+		this.valymoSkaitliukas = PANAUDOJIMU_SKAICIAUS_RIBA;
 	}
 	
 	

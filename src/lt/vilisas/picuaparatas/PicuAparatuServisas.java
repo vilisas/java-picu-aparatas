@@ -26,11 +26,6 @@ public class PicuAparatuServisas {
 	public final static int DEFAULT_PRODUKTO_KIEKIS = 20; // tiek vienetu produkto telpa aparate
 	private static Map<String,PicuAparatas> picuAparatai = new HashMap<>();
 	private static Map<String,Receptas> receptai = new HashMap<>();
-
-	
-	public PicuAparatuServisas() {
-		// TODO Auto-generated constructor stub
-	}
 	
 	/**
 	 * 
@@ -40,9 +35,7 @@ public class PicuAparatuServisas {
 	public static PicuAparatas sukurtiPicuAparata(String pavadinimas) {
 		PicuAparatas pa = new PicuAparatas(pavadinimas);
 		picuAparatai.put(pavadinimas, pa);
-		return pa;
-		
-		
+		return pa;	
 	}
 	
 	public static boolean sunaikintiPicuAparata(String pavadinimas) {
@@ -113,7 +106,6 @@ public class PicuAparatuServisas {
 		if (gautiRecepta(receptoPavadinimas) == null) {
 			return false;
 		}
-		
 		pa.pridetiProduktu(gautiRecepta(receptoPavadinimas), DEFAULT_PRODUKTO_KIEKIS);
 		return true;
 	}
@@ -128,16 +120,12 @@ public class PicuAparatuServisas {
 			return false;
 		}
 		pa.sukurtiProdukta(produktas,DEFAULT_PRODUKTO_KIEKIS);
-		
 		return true;
 	}
-	
-	
 	
 	public static Set<String> gautiReceptuSarasa() {
 		Set<String> keys = receptai.keySet();
 		return keys;
-		
 	}
 
 	public static Set<String> gautiAparatuSarasa() {
@@ -152,7 +140,6 @@ public class PicuAparatuServisas {
 				l.add(pavadinimas);
 			}
 		}
-		
 		return l;
 	}
 	
