@@ -31,6 +31,8 @@ import lt.vilisas.picuaparatas.Picos.Sarasas;
  * Galimu picu sarasu rupinasi front-end'as - jis gali paklausti, ar picu aparatas gali iskepti nurodyto dydzio pica
  * pagal nurodyta recepta.
  * 
+ * 
+ * TODO: Aparatas neturi extend'inti Saraso. Susikurti sarasa objekto viduje.
  */
 
 public class PicuAparatas extends Sarasas {
@@ -65,10 +67,10 @@ public class PicuAparatas extends Sarasas {
 	 * @return - true - pakanka, false - ne
 	 */
 	public boolean arPakankaProduktu(Sarasas receptas, int dydis) {
-		Map<String, Produktas> rps = receptas.getProduktai();	//recepto produktu sarasas, kodo iskaitomumui
+		Map<String, Produktas> receptoProduktuSarasas = receptas.getProduktai();	//recepto produktu sarasas, kodo iskaitomumui
 		// pradzioje patikrinam, ar pakanka produktu, jei ne - return null ( & throw exception ? )
-		for (String pavadinimas : rps.keySet()) {
-				int kiekis = rps.get(pavadinimas).getKiekis() * dydis;
+		for (String pavadinimas : receptoProduktuSarasas.keySet()) {
+				int kiekis = receptoProduktuSarasas.get(pavadinimas).getKiekis() * dydis;
 				if (this.gautiProduktoKieki(pavadinimas) < kiekis) {
 					return false;
 				}
@@ -77,9 +79,12 @@ public class PicuAparatas extends Sarasas {
 	}
 	public Pica gamintiPica(Receptas receptas, int dydis) throws PicaException {
 		/*
-		 * pasitikrinam, ar galim gaminti pica
-		 * i Pica sudeti sukraunam kiekius, kiek ir kokiu produktu sudeta
+		 * Sutikrina, ar pakanka produktu pasirinktai picai ir dydziui pagaminti
+		 * tikrinam kieki aparate, pagal recepte nurodyta produkto pavadinima ir reikalinga kieki dauginant is dydzio 
+		 * jei nepakanka, metodas ismeta NepakankaProduktuException
+		 * 
 		 */
+		
 		if (receptas == null) {
 			System.out.println("Nera tokio recepto!");
 			return null;
@@ -88,17 +93,7 @@ public class PicuAparatas extends Sarasas {
 		if (!arPasiruoses()) {
 			throw new AparatasNepasiruosesException(gautiValymoSkaitliuka());
 		}
-		
-		
-		// front end'as arba servisas turetu sutikrinti dydi 
-//		if ((dydis <1 || dydis >3)) {
-//			throw new PicosDydisException(dydis);
-//		}
-
-		// sutikrina, ar pakanka produktu pasirinktai picai ir dydziui pagaminti
-		// tikrinam kieki aparate, pagal recepte nurodyta produkto pavadinima ir reikalinga kieki dauginant is dydzio 
-		// jei nepakanka, metodas grazina null
-		
+				
 		Pica pica = new Pica(receptas.getPavadinimas(), dydis);
 		pica.setPicaPagaminta(false);
 		
@@ -110,10 +105,10 @@ public class PicuAparatas extends Sarasas {
 			throw new NepakankaProduktuException(pavadinimas);
 		}
 		
-		Map<String, Produktas> rps = receptas.getProduktai();	//recepto produktu sarasas, kodo iskaitomumui
+		Map<String, Produktas> receptoProduktuSarasas = receptas.getProduktai();
 		// numinusuojam produktus is aparato
-		for (String key : rps.keySet()) {
-			int kiekis = rps.get(key).getKiekis() * dydis;
+		for (String key : receptoProduktuSarasas.keySet()) {
+			int kiekis = receptoProduktuSarasas.get(key).getKiekis() * dydis;
 				this.sumazintiProduktoKieki(key, kiekis);
 				pica.sukurtiProdukta(key, kiekis);
 			}		

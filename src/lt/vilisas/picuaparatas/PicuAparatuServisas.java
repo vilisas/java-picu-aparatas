@@ -16,7 +16,6 @@ import java.util.Set;
 import lt.vilisas.picuaparatas.Exceptions.AparatasNepasiruosesException;
 import lt.vilisas.picuaparatas.Exceptions.NepakankaProduktuException;
 import lt.vilisas.picuaparatas.Exceptions.PicaException;
-import lt.vilisas.picuaparatas.Exceptions.PicosDydisException;
 import lt.vilisas.picuaparatas.Picos.Pica;
 import lt.vilisas.picuaparatas.Picos.Receptas;
 import lt.vilisas.picuaparatas.Picos.Sarasas;
@@ -163,10 +162,6 @@ public class PicuAparatuServisas {
 		try {
 			p = surastiPicuAparata(picuAparatas).gamintiPica(gautiRecepta(picosPavadinimas),  dydis);
 			return p;
-			
-		} catch (PicosDydisException e) {
-			System.out.println("*** Blogas picos dydis " + e.gautiDydi());
-			throw e;
 		} catch (AparatasNepasiruosesException e) {
 			System.out.print("*** Aparatas nepasiruoses");
 			if (e.gautiSkaitliuka() <= 0) {

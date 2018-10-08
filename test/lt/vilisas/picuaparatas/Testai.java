@@ -13,9 +13,7 @@ import lt.vilisas.picuaparatas.Picos.Pica;
 import lt.vilisas.picuaparatas.Picos.Produktas;
 import lt.vilisas.picuaparatas.Picos.Receptas;
 import lt.vilisas.picuaparatas.Picos.Sarasas;
-/*
- * pirmas zaidimas su testais siaip..
- */
+
 class Testai {
 
 	Receptas r, r2, surioPicosReceptas;

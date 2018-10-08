@@ -9,7 +9,8 @@ import lt.vilisas.picuaparatas.Picos.Pica;
 import lt.vilisas.picuaparatas.Picos.Receptas;
 
 /*
- * TODO: sutvarkyti skaiciu input'a, kai ivedama neteisinga reiksme
+ * TODO: sutvarkyti skaiciu input'a, kai ivedama neteisinga reiksme 
+ * 
  * 
  */
 public class Main {
@@ -19,11 +20,7 @@ public class Main {
 		sukurkPicosAparatus();
 		kurkReceptus();
 		uzpildykVisusAparatusProduktais();
-		
-//		parodytiAparatuBusenas();
-//		parodytiPicuAparatus();
-//		parodytiReceptus();
-		
+				
 		boolean pabaiga = false;
 		while(!pabaiga) {
 			System.out.println("Ar norite picos? 0 - ne, 1 - taip, 2 - apziureti aparatus, 3 - valyti, 4- uzpildyti"); 
@@ -43,8 +40,6 @@ public class Main {
 				if (r == null) {
 					break;
 				}
-//				System.out.print("Nurodykite dydi (1-3) arba didesne");
-//				int dydis = gautiSkaiciu(0);
 				int dydis = pasirinktiPicosDydi();
 				if (dydis <=0) {
 					break;
@@ -81,6 +76,7 @@ public class Main {
 	private static int pasirinktiPicosDydi() {
 		int dydis=0;
 		do {
+			// TODO: sugaudyti skanerio exceptions
 			System.out.println("Nurodykite dydi (1 maza, 2 - didele, 3 - XXL,  0 - atsaukti)");
 			dydis = sc.nextInt();
 		} while (dydis <0 || dydis > 3);
@@ -167,12 +163,14 @@ public class Main {
 		}
 	}
 	private static void uzpildykVisusAparatusProduktais() {		
+
 		
 		PicuAparatuServisas.uzpildytiAparataProduktais("visiems", "robotu");
 		PicuAparatuServisas.uzpildytiAparataProduktais("visiems", "surio");
 		PicuAparatuServisas.uzpildytiAparataProduktais("visiems", "astri");
 		
 		PicuAparatuServisas.uzpildytiAparataProduktais("robotams", "robotu");
+
 		PicuAparatuServisas.uzpildytiAparataProduktais("zmonems", "surio");
 		PicuAparatuServisas.uzpildytiAparataProduktais("zmonems", "astri");		
 		
@@ -204,10 +202,7 @@ public class Main {
 		robotuPicosReceptas.sukurtiProdukta("varztai",5);
 		robotuPicosReceptas.sukurtiProdukta("vinys",6);
 		robotuPicosReceptas.sukurtiProdukta("metalo drozles",5);
-		robotuPicosReceptas.sukurtiProdukta("solidolas",13);
-		robotuPicosReceptas.sukurtiProdukta("solidolas",3);	// tik vienas produktas tuo paciu raktu
+		robotuPicosReceptas.sukurtiProdukta("solidolas",3);
 		PicuAparatuServisas.pridetiRecepta(robotuPicosReceptas);
 	}
-
-	
 }
